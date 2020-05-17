@@ -5,9 +5,9 @@ import requests
 app = Flask(__name__)
 
 
-@app.route("/posts/")
-def get_posts():
-   post_response = requests.get("https://jsonplaceholder.typicode.com/posts")
+@app.route("/posts/<posts_id>")
+def get_posts(posts_id):
+   post_response = requests.get("https://jsonplaceholder.typicode.com/posts/"+posts_id)
    posts = post_response.json()
 
    response = app.response_class(
@@ -19,3 +19,5 @@ def get_posts():
    return response
 if __name__ == "__main__":
     app.run()
+
+
